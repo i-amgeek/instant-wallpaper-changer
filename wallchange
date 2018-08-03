@@ -17,6 +17,8 @@
 '''
  
 import sys
+from os.path import expanduser
+home = expanduser("~")
 try:
 	from urllib.request import Request, urlopen  # Python 3
 except ImportError:
@@ -41,7 +43,8 @@ if args.filepath:
     PHOTO_PATH = args.filepath 
 else:
     import os
-    PHOTO_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)) + "photo.jpg")
+    print(args.search_string)
+    PHOTO_PATH = home+'/Pictures/Wallpaper/' +args.search_string.replace(' ', '-') + '.jpg' 
 
 if args.search_string:
     SEARCH_NAME = args.search_string
